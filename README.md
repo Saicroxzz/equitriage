@@ -69,6 +69,7 @@ npm run lint
 # Compilar para producción
 npm run build
 La carpeta generada ./dist contendrá la aplicación optimizada lista para producción.🌐 Despliegue Gratuito en NetlifySube tu proyecto a un repositorio en GitHub.Inicia sesión en Netlify.Haz clic en "Add new site" $\rightarrow$ "Import an existing project".Selecciona tu repositorio de GitHub equitriage.Netlify detectará la configuración automáticamente:Build Command: npm run buildPublish Directory: distHaz clic en "Deploy Site". En pocos segundos tu aplicación estará en vivo.📂 Estructura del Proyectoequitriage/
+equitriage/
 ├── index.html
 ├── package.json
 ├── vite.config.js
