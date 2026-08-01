@@ -27,12 +27,65 @@ export async function generatePDF(element, patientName = 'Equino') {
       backgroundColor: '#ffffff',
       windowWidth: 800,
       onclone: (clonedDoc) => {
-        // html2canvas no soporta la función de color "oklch" de Tailwind CSS v4.
-        // Sanitizamos los bloques <style> del documento clonado reemplazando oklch por colores seguros.
+        // html2canvas no soporta las funciones de color modernas como "oklch" de Tailwind CSS v4.
+        // En producción, los estilos están en archivos <link rel="stylesheet"> o document.styleSheets.
+
+        // 1. Sanitizar todos los bloques <style> inline en el documento clonado
         const styleElements = clonedDoc.querySelectorAll('style');
         styleElements.forEach((style) => {
-          if (style.textContent && style.textContent.includes('oklch')) {
-            style.textContent = style.textContent.replace(/oklch\([^)]+\)/gi, '#000000');
+          if (style.textContent) {
+            style.textContent = style.textContent
+              .replace(/oklch\([^;}]*\)/gi, '#000000')
+              .replace(/oklab\([^;}]*\)/gi, '#000000');
+          }
+        });
+
+        // 2. Extraer y sanitizar todas las reglas CSS cargadas en document.styleSheets
+        // e inyectarlas como un bloque <style> sanitizado, para que html2canvas no dependa de <link> con oklch
+        try {
+          let aggregatedCss = '';
+          const sheets = Array.from(document.styleSheets || []);
+          sheets.forEach((sheet) => {
+            try {
+              const rules = sheet.cssRules || sheet.rules;
+              if (rules) {
+                Array.from(rules).forEach((rule) => {
+                  aggregatedCss += rule.cssText + '\n';
+                });
+              }
+            } catch (e) {
+              // Manejo de posibles restricciones CORS al leer stylesheets
+            }
+          });
+
+          if (aggregatedCss) {
+            const sanitizedStyle = clonedDoc.createElement('style');
+            sanitizedStyle.textContent = aggregatedCss
+              .replace(/oklch\([^;}]*\)/gi, '#000000')
+              .replace(/oklab\([^;}]*\)/gi, '#000000');
+            clonedDoc.head.appendChild(sanitizedStyle);
+          }
+        } catch (e) {
+          console.warn('Error al sanitizar styleSheets para PDF:', e);
+        }
+
+        // 3. Eliminar los tags <link rel="stylesheet"> del documento clonado para evitar que html2canvas los vuelva a parsear con oklch sin sanitizar
+        const linkElements = clonedDoc.querySelectorAll('link[rel="stylesheet"]');
+        linkElements.forEach((link) => {
+          link.remove();
+        });
+
+        // 4. Sanitizar atributos style inline en elementos del DOM si contuvieran oklch
+        const elementsWithStyle = clonedDoc.querySelectorAll('[style*="oklch"], [style*="oklab"]');
+        elementsWithStyle.forEach((el) => {
+          const styleAttr = el.getAttribute('style');
+          if (styleAttr) {
+            el.setAttribute(
+              'style',
+              styleAttr
+                .replace(/oklch\([^;}]*\)/gi, '#000000')
+                .replace(/oklab\([^;}]*\)/gi, '#000000')
+            );
           }
         });
       },
