@@ -106,8 +106,8 @@ export default function Step1Patient({ formData, updateFormData, onNext }) {
           <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
             Sexo <span className="text-red-400">*</span>
           </label>
-          <div className="grid grid-cols-3 gap-2">
-            {['Macho', 'Hembra', 'Castrado'].map((option) => (
+          <div className="grid grid-cols-2 gap-2">
+            {['Macho', 'Hembra'].map((option) => (
               <button
                 type="button"
                 key={option}
@@ -123,6 +123,31 @@ export default function Step1Patient({ formData, updateFormData, onNext }) {
             ))}
           </div>
           {errors.sex && <p className="mt-1 text-xs text-red-400 flex items-center gap-1"><AlertCircle className="w-3.5 h-3.5" />{errors.sex}</p>}
+        </div>
+
+        {/* ¿Está castrado? */}
+        <div>
+          <label className="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-2">
+            ¿Está Castrado?
+          </label>
+          <div className="grid grid-cols-2 gap-2">
+            {['No', 'Sí'].map((option) => (
+              <button
+                type="button"
+                key={option}
+                onClick={() => updateFormData({ isCastrated: option })}
+                className={`h-12 rounded-xl text-xs font-bold transition-all border flex items-center justify-center ${
+                  (formData.isCastrated || 'No') === option
+                    ? option === 'Sí'
+                      ? 'bg-amber-600 text-white border-amber-500 shadow-md shadow-amber-600/30 ring-2 ring-amber-500/40'
+                      : 'bg-teal-600 text-white border-teal-500 shadow-md shadow-teal-600/30 ring-2 ring-teal-500/40'
+                    : 'bg-slate-900/80 border-slate-700 text-slate-300 hover:border-slate-600'
+                }`}
+              >
+                {option}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Peso (kg) */}

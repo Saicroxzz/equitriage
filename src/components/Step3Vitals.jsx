@@ -205,18 +205,18 @@ export default function Step3Vitals({ formData, updateFormData, onNext, onPrev }
 
           <div className="grid grid-cols-2 gap-2">
             {[
-              { val: 'Rosadas (Normal)', class: 'bg-emerald-600' },
-              { val: 'Pálidas (Anemia/Shock)', class: 'bg-slate-600' },
-              { val: 'Congestivas (Toxemia)', class: 'bg-rose-700' },
-              { val: 'Cianóticas (Hipoxia)', class: 'bg-indigo-700' },
-              { val: 'Ictéricas (Hepatopatía)', class: 'bg-amber-600' },
+              { val: 'Rosadas', class: 'bg-emerald-600' },
+              { val: 'Pálidas', class: 'bg-slate-600' },
+              { val: 'Congestivas', class: 'bg-rose-700' },
+              { val: 'Cianóticas', class: 'bg-indigo-700' },
+              { val: 'Ictéricas', class: 'bg-amber-600' },
             ].map((opt) => (
               <button
                 type="button"
                 key={opt.val}
                 onClick={() => updateFormData({ mucousMembranes: opt.val })}
                 className={`h-12 px-2 rounded-xl text-xs font-bold transition-all border text-left flex items-center justify-center ${
-                  formData.mucousMembranes === opt.val
+                  (formData.mucousMembranes === opt.val || (opt.val === 'Rosadas' && formData.mucousMembranes === 'Rosadas (Normal)'))
                     ? `${opt.class} text-white border-transparent shadow-md`
                     : 'bg-slate-950 border-slate-700 text-slate-300 hover:border-slate-600'
                 }`}
@@ -231,15 +231,15 @@ export default function Step3Vitals({ formData, updateFormData, onNext, onPrev }
         <div className="bg-slate-900/70 p-5 rounded-2xl border border-slate-800 space-y-3">
           <label className="text-xs font-semibold text-slate-300 uppercase tracking-wider flex items-center gap-1.5">
             <Droplets className="w-4 h-4 text-blue-400" />
-            <span>Grado de Hidratación (Pliegue Cutáneo)</span>
+            <span>Grado de Hidratación</span>
           </label>
 
           <div className="grid grid-cols-2 gap-2">
             {[
               { val: 'Normal', class: 'bg-emerald-600' },
-              { val: 'Deshidratación Leve (5%)', class: 'bg-amber-600' },
-              { val: 'Deshidratación Moderada (8%)', class: 'bg-orange-600' },
-              { val: 'Deshidratación Severa (10%+)', class: 'bg-red-700' },
+              { val: 'Deshidratación Leve', class: 'bg-amber-600' },
+              { val: 'Deshidratación Moderada', class: 'bg-orange-600' },
+              { val: 'Deshidratación Severa', class: 'bg-red-700' },
             ].map((opt) => (
               <button
                 type="button"

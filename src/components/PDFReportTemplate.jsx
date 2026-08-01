@@ -75,14 +75,16 @@ export default function PDFReportTemplate({ formData, triageResult, pdfRef }) {
                 <td style={{ padding: '4px 8px', color: '#0f172a' }}>{formData.sex || '---'}</td>
               </tr>
               <tr>
-                <td style={{ padding: '4px 8px', fontWeight: 'bold', color: '#475569' }}>Peso Estimado:</td>
-                <td style={{ padding: '4px 8px', color: '#0f172a' }}>{formData.weight ? `${formData.weight} kg` : '---'}</td>
+                <td style={{ padding: '4px 8px', fontWeight: 'bold', color: '#475569' }}>¿Está Castrado?:</td>
+                <td style={{ padding: '4px 8px', color: '#0f172a' }}>{formData.isCastrated || 'No'}</td>
                 <td style={{ padding: '4px 8px', fontWeight: 'bold', color: '#475569' }}>Raza:</td>
                 <td style={{ padding: '4px 8px', color: '#0f172a' }}>{formData.breed || '---'}</td>
               </tr>
               <tr>
+                <td style={{ padding: '4px 8px', fontWeight: 'bold', color: '#475569' }}>Peso Estimado:</td>
+                <td style={{ padding: '4px 8px', color: '#0f172a' }}>{formData.weight ? `${formData.weight} kg` : '---'}</td>
                 <td style={{ padding: '4px 8px', fontWeight: 'bold', color: '#475569' }}>Veterinario:</td>
-                <td colSpan="3" style={{ padding: '4px 8px', color: '#0f172a', fontWeight: 'bold' }}>{formData.veterinarian || 'Sin especificar'}</td>
+                <td style={{ padding: '4px 8px', color: '#0f172a', fontWeight: 'bold' }}>{formData.veterinarian || 'Sin especificar'}</td>
               </tr>
             </tbody>
           </table>
@@ -125,7 +127,7 @@ export default function PDFReportTemplate({ formData, triageResult, pdfRef }) {
               <tr>
                 <td style={{ padding: '6px 8px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>Color de Mucosas</td>
                 <td style={{ padding: '6px 8px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>{formData.mucousMembranes || 'N/E'}</td>
-                <td style={{ padding: '6px 8px', border: '1px solid #cbd5e1', color: '#64748b' }}>Rosadas (Normal)</td>
+                <td style={{ padding: '6px 8px', border: '1px solid #cbd5e1', color: '#64748b' }}>Rosadas</td>
               </tr>
               <tr style={{ backgroundColor: '#fafafa' }}>
                 <td style={{ padding: '6px 8px', border: '1px solid #cbd5e1', fontWeight: 'bold' }}>Grado de Hidratación</td>

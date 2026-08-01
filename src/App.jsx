@@ -17,6 +17,7 @@ const INITIAL_FORM_DATA = {
   age: '',
   ageUnit: 'Años',
   sex: 'Macho',
+  isCastrated: 'No',
   weight: '',
   breed: '',
   dateTime: new Date().toISOString().slice(0, 16),
@@ -36,7 +37,7 @@ const INITIAL_FORM_DATA = {
   heartRate: '',
   respRate: '',
   trc: '',
-  mucousMembranes: 'Rosadas (Normal)',
+  mucousMembranes: 'Rosadas',
   hydration: 'Normal',
 
   // Evaluación por Sistemas

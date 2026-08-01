@@ -119,7 +119,7 @@ export function calculateTriage(data) {
   }
 
   // Mucosas y Hidratación
-  if (data.mucousMembranes && data.mucousMembranes !== 'Rosadas (Normal)') {
+  if (data.mucousMembranes && data.mucousMembranes !== 'Rosadas' && data.mucousMembranes !== 'Rosadas (Normal)') {
     alteredParameters.push({ name: 'Mucosas Alteradas', value: data.mucousMembranes, severity: 'medium' });
   }
   if (data.hydration && data.hydration !== 'Normal') {

@@ -31,10 +31,10 @@ export default function Step4Clinical({ formData, updateFormData, onNext, onPrev
           </label>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             {[
-              { val: 'No', label: 'Sin Dolor (0 pts)', color: 'bg-emerald-600' },
-              { val: 'Leve', label: 'Dolor Leve (1 pt)', color: 'bg-amber-600' },
-              { val: 'Moderado', label: 'Dolor Moderado (2 pts)', color: 'bg-orange-600' },
-              { val: 'Severo', label: 'Dolor Severo (3 pts)', color: 'bg-red-600 ring-2 ring-red-500' },
+              { val: 'No', label: 'Sin Dolor', color: 'bg-emerald-600' },
+              { val: 'Leve', label: 'Dolor Leve', color: 'bg-amber-600' },
+              { val: 'Moderado', label: 'Dolor Moderado', color: 'bg-orange-600' },
+              { val: 'Severo', label: 'Dolor Severo', color: 'bg-red-600 ring-2 ring-red-500' },
             ].map((opt) => (
               <button
                 type="button"
@@ -204,7 +204,7 @@ export default function Step4Clinical({ formData, updateFormData, onNext, onPrev
 
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-medium text-slate-300">Disnea (Dificultad Marcada)</span>
+              <span className="text-xs font-medium text-slate-300">Disnea</span>
               <div className="flex gap-1">
                 {['No', 'Sí'].map((opt) => (
                   <button
@@ -226,7 +226,7 @@ export default function Step4Clinical({ formData, updateFormData, onNext, onPrev
             </div>
 
             <div className="flex items-center justify-between">
-              <span className="text-xs font-medium text-slate-300">Cianosis (Coloración azulada)</span>
+              <span className="text-xs font-medium text-slate-300">Cianosis</span>
               <div className="flex gap-1">
                 {['No', 'Sí'].map((opt) => (
                   <button
@@ -248,7 +248,7 @@ export default function Step4Clinical({ formData, updateFormData, onNext, onPrev
             </div>
 
             <div className="flex items-center justify-between">
-              <span className="text-xs font-medium text-slate-300">Secreción Nasal (Muco-purulenta)</span>
+              <span className="text-xs font-medium text-slate-300">Secreción Nasal</span>
               <div className="flex gap-1">
                 {['No', 'Sí'].map((opt) => (
                   <button
@@ -280,7 +280,7 @@ export default function Step4Clinical({ formData, updateFormData, onNext, onPrev
 
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-medium text-slate-300">Convulsiones (5 pts)</span>
+              <span className="text-xs font-medium text-slate-300">Convulsiones</span>
               <div className="flex gap-1">
                 {['No', 'Sí'].map((opt) => (
                   <button
@@ -302,7 +302,7 @@ export default function Step4Clinical({ formData, updateFormData, onNext, onPrev
             </div>
 
             <div className="flex items-center justify-between">
-              <span className="text-xs font-medium text-slate-300">Ataxia / Incoordinación (2 pts)</span>
+              <span className="text-xs font-medium text-slate-300">Ataxia / Incoordinación</span>
               <div className="flex gap-1">
                 {['No', 'Sí'].map((opt) => (
                   <button

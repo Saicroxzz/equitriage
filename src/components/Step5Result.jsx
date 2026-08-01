@@ -59,7 +59,7 @@ export default function Step5Result({
               {title}
             </h2>
             <p className="text-xs text-slate-400 mt-1">
-              Evaluación realizada: {formData.name || 'Paciente Equino'} ({formData.sex}, {formData.age} {formData.ageUnit})
+              Evaluación realizada: {formData.name || 'Paciente Equino'} (Sexo: {formData.sex || 'N/E'}, Castrado: {formData.isCastrated || 'No'}, {formData.age} {formData.ageUnit})
             </p>
           </div>
 
